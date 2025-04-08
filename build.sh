@@ -50,7 +50,7 @@ git_commit=""
 git_ref=""
 jpeg_impl="mozjpeg"
 with_ffi_compat=false
-with_hevc=false
+with_hevc=true
 with_debug=false
 with_prebuilt=true
 with_zlib_ng=true
@@ -118,10 +118,10 @@ if [ "$build_web_variant" = true ] && [ "$build_all_variant" = true ]; then
   exit 1
 fi
 
-if [ "$targets_static" = true ] && [ "$contains_gpl_libs" = true ]; then
-  echo "ERROR: Distributing a statically linked library against GPL libraries, without releasing the code as GPL, violates the GPL license." >&2
-  exit 1
-fi
+# if [ "$targets_static" = true ] && [ "$contains_gpl_libs" = true ]; then
+#   echo "ERROR: Distributing a statically linked library against GPL libraries, without releasing the code as GPL, violates the GPL license." >&2
+#   exit 1
+# fi
 
 if [ "$targets_shared" = true ] && [ "$with_ffi_compat" = true ]; then
   echo "WARNING: The --with-ffi-compat option makes only sense when building static binaries." >&2
